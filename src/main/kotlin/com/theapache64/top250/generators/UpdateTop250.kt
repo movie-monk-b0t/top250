@@ -106,7 +106,7 @@ fun createMinMovies(sortedMovies: List<IMDBMovie>) {
             movie.actor.map { it.name },
             movie.description,
             directors.map { it.name },
-            listOf("X"),
+            movie.genre as List<String>,
             movie.image,
             movie.url,
             movie.name,
