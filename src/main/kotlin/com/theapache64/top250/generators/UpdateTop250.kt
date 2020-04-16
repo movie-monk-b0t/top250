@@ -11,7 +11,7 @@ import java.net.URL
 private val ID_REGEX = "<td class=\"titleColumn\">.+?title\\/(?<imdbId>tt\\d+)".toRegex()
 private val JSON_REGEX =
     "<script type=\"application\\/ld\\+json\">(?<json>.+?)<\\/script>".toRegex(RegexOption.UNIX_LINES)
-private const val IS_USE_CACHE = true
+private const val IS_USE_CACHE = false
 
 fun main(args: Array<String>) {
 
@@ -41,9 +41,9 @@ fun main(args: Array<String>) {
         .setPrettyPrinting()
         .create()
 
-    for (imdbId in imdbIds) {
-
-        println("Getting $imdbId")
+    for ((index, imdbId) in imdbIds.withIndex()) {
+        println("----------------------------------------")
+        println("${index + 1}) Getting $imdbId")
         val localMovieHtmlFile = File("movies_html_cache/$imdbId.html")
 
         val moviesHtml = if (IS_USE_CACHE && localMovieHtmlFile.exists()) {
@@ -69,6 +69,8 @@ fun main(args: Array<String>) {
             if (movie.director is LinkedTreeMap<*, *>) {
                 movie.director = listOf(gson.toJsonTree(movie.director))
             }
+
+            println("🎥 ${movie.name}")
 
             movieList.add(movie)
         } catch (e: Exception) {
