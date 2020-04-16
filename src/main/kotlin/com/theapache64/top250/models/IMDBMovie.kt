@@ -55,7 +55,7 @@ data class IMDBMovie(
         @SerializedName("ratingCount")
         val ratingCount: Int, // 69310
         @SerializedName("ratingValue")
-        val ratingValue: String, // 8.1
+        val ratingValue: Float, // 8.1
         @SerializedName("@type")
         val type: String, // AggregateRating
         @SerializedName("worstRating")
