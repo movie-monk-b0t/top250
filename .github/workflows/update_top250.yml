@@ -24,8 +24,8 @@ jobs:
       - name: Commit files
         run: |
           git config --local user.email "theapache64@gmail.com"
-          git config --local user.name "theapache64"
-          git commit -m "update top250" -a
+          git config --local user.name "theapache64-GA"
+          git commit -m "🚀 UPDATE top250!" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
