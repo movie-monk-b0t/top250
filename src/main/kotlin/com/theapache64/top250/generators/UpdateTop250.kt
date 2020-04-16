@@ -11,7 +11,7 @@ import java.net.URL
 private val ID_REGEX = "<td class=\"titleColumn\">.+?title\\/(?<imdbId>tt\\d+)".toRegex()
 private val JSON_REGEX =
     "<script type=\"application\\/ld\\+json\">(?<json>.+?)<\\/script>".toRegex(RegexOption.UNIX_LINES)
-private const val IS_USE_CACHE = false
+private const val IS_USE_CACHE = true
 
 fun main(args: Array<String>) {
 
