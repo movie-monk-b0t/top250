@@ -3,8 +3,6 @@ name: Update Top 250
 on:
   push:
     branches: [ master ]
-  schedule:
-    - '*/5 * * * *'
 
 jobs:
   build:
@@ -19,8 +17,7 @@ jobs:
       - name: Get latest repo
         uses: actions/checkout@master
       - name: Create local changes
-        run: |
-          java -jar top250.main.jar
+        run: java -jar top250.main.jar
       - name: Commit files
         run: |
           git config --local user.email "theapache64@gmail.com"
