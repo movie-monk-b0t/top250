@@ -1,0 +1,30 @@
+name: Update Top 250
+
+on:
+  push:
+    branches: [ master ]
+  schedule:
+    - '*/5 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Get latest repo
+        uses: actions/checkout@master
+      - name: Create local changes
+        run: |
+          java -jar top250.main.jar
+      - name: Commit files
+        run: |
+          git config --local user.email "theapache64@gmail.com"
+          git config --local user.name "theapache64"
+          git commit -m "update top250" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
