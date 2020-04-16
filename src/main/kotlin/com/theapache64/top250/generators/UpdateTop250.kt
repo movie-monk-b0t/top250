@@ -2,8 +2,10 @@ package com.theapache64.top250.generators
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonObject
 import com.google.gson.internal.LinkedTreeMap
 import com.theapache64.top250.models.IMDBMovie
+import com.theapache64.top250.models.MinMovie
 import com.theapache64.top250.utils.removeNewLinesAndMultipleSpaces
 import java.io.File
 import java.net.URL
@@ -12,6 +14,10 @@ private val ID_REGEX = "<td class=\"titleColumn\">.+?title\\/(?<imdbId>tt\\d+)".
 private val JSON_REGEX =
     "<script type=\"application\\/ld\\+json\">(?<json>.+?)<\\/script>".toRegex(RegexOption.UNIX_LINES)
 private const val IS_USE_CACHE = false
+
+private val gson: Gson = GsonBuilder()
+    .setPrettyPrinting()
+    .create()
 
 fun main(args: Array<String>) {
 
@@ -37,9 +43,6 @@ fun main(args: Array<String>) {
 
     // looping through each id
     val movieList = mutableListOf<IMDBMovie>()
-    val gson = GsonBuilder()
-        .setPrettyPrinting()
-        .create()
 
     for ((index, imdbId) in imdbIds.withIndex()) {
         println("----------------------------------------")
@@ -84,7 +87,33 @@ fun main(args: Array<String>) {
 
 
     val top250JsonFile = File("top250.json")
-    top250JsonFile.writeText(gson.toJson(movieList.sortedByDescending { it.name }))
+    val sortedMovies = movieList.sortedByDescending { it.name }
+    top250JsonFile.writeText(gson.toJson(sortedMovies))
 
+    createMinMovies(sortedMovies)
+}
 
+fun createMinMovies(sortedMovies: List<IMDBMovie>) {
+
+    println("Creating minified version")
+
+    val minMovies = sortedMovies.map { movie ->
+        val directors = (movie.director as List<Any>).map { directorMap ->
+            gson.fromJson(gson.toJson(directorMap), IMDBMovie.Director::class.java)
+        }
+
+        MinMovie(
+            movie.actor.map { it.name },
+            movie.description,
+            directors.map { it.name },
+            listOf("X"),
+            movie.image,
+            movie.url,
+            movie.name,
+            movie.aggregateRating.ratingValue
+        )
+    }
+
+    val top250MinJsonFile = File("top250_min.json")
+    top250MinJsonFile.writeText(gson.toJson(minMovies))
 }
