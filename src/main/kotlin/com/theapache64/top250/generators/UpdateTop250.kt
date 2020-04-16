@@ -82,7 +82,7 @@ fun main(args: Array<String>) {
 
 
     val top250JsonFile = File("top250.json")
-    top250JsonFile.writeText(gson.toJson(movieList.sortedByDescending { it.aggregateRating.ratingValue }))
+    top250JsonFile.writeText(gson.toJson(movieList.sortedByDescending { it.name }))
 
 
 }
