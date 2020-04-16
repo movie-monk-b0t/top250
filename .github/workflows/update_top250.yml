@@ -1,8 +1,8 @@
 name: Update Top 250
 
 on:
-  push:
-    branches: [ master ]
+  schedule:
+    - '*/5 * * * *'
 
 jobs:
   build:
