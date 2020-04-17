@@ -14,6 +14,8 @@ data class MinMovie(
     val genre: List<String>,
     @SerializedName("image_url")
     val imageUrl: String, // image-url-goes-here
+    @SerializedName("thumb_url")
+    val thumbUrl : String,
     @SerializedName("imdb_url")
     val imdbUrl: String, // /title/tt0055630/
     @SerializedName("name")

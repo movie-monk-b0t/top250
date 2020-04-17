@@ -108,6 +108,7 @@ fun createMinMovies(sortedMovies: List<IMDBMovie>) {
             directors.map { it.name },
             movie.genre as List<String>,
             movie.image,
+            movie.image.toThumbUrl(),
             movie.url,
             movie.name,
             movie.aggregateRating.ratingValue
@@ -116,4 +117,8 @@ fun createMinMovies(sortedMovies: List<IMDBMovie>) {
 
     val top250MinJsonFile = File("top250_min.json")
     top250MinJsonFile.writeText(gson.toJson(minMovies))
+}
+
+fun String.toThumbUrl(): String {
+    return this.replace(".jpg", "UX182_CR0,0,182,268_AL__QL50.jpg")
 }
