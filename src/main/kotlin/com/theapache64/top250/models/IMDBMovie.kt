@@ -31,8 +31,6 @@ data class IMDBMovie(
     val keywords: String, // doctor,hospital,medical school,whistleblower,parsi
     @SerializedName("name")
     val name: String, // Munna Bhai M.B.B.S.
-    @SerializedName("review")
-    val review: Review,
     @SerializedName("trailer")
     val trailer: Trailer,
     @SerializedName("@type")
@@ -79,37 +77,6 @@ data class IMDBMovie(
         @SerializedName("url")
         val url: String // /name/nm0386246/
     )
-
-    data class Review(
-        @SerializedName("author")
-        val author: Author,
-        @SerializedName("dateCreated")
-        val dateCreated: String, // 2007-12-29
-        @SerializedName("inLanguage")
-        val inLanguage: String, // English
-        @SerializedName("itemReviewed")
-        val itemReviewed: ItemReviewed,
-        @SerializedName("name")
-        val name: String, // The introduction to Munnabhai and Circuit
-        @SerializedName("reviewBody")
-        val reviewBody: String, // Inspired by the Hollywood movie 'Patch Adam', 'Munnabhai M.B.B.S.' tells the comedic story of a thug who wants to become a doctor. The film has its major share of comedic moments and its dramatic moments. It is indeed an entertaining film with the famously lovable characters like Munnabhai and Circuit. Rajkumar Hirani may have taken the idea of an older outsider wanting to become a doctor from 'Patch Adams' but in essence 'Munnabhai M.B.B.S.' is its own film and it is the performances and comedy that make it worth the watch because most the dramatic moments are a little over the top. While the dialogue in the comedic scenes are witty and hilarious, the ones in the dramatic scenes are a mess.Sanjay Dutt totally nails Munnabhai. It's hard to picture anyone else in the title role. The actor does full justice. It was nice to see Sunil Dutt after a long time and that too as father to his own son. The actor has a strong presence, even in a brief role. Gracy Singh is cute and adorable. Jimmy Shergill is awesome and holds his own as Zaheer and Boman Irani too does very well. However, it is Arshad Warsi who steals the show in a breakthrough performance as one of the most memorable film characters of recent time, Circuit.Most of the songs are well balanced and are good additions to the film. I found Munnabhai's romantic ballad hilarious when he tries to convince the suicider to cut the crap. On the technical side, it's alright. On the whole this is one enjoyable flick. One would have expected more from the second Munnabhai film which I found boring but why should that prevent the pleasure that comes from this movie?
-        @SerializedName("@type")
-        val type: String // Review
-    ) {
-        data class Author(
-            @SerializedName("name")
-            val name: String, // Chrysanthepop
-            @SerializedName("@type")
-            val type: String // Person
-        )
-
-        data class ItemReviewed(
-            @SerializedName("@type")
-            val type: String, // CreativeWork
-            @SerializedName("url")
-            val url: String // /title/tt0374887/
-        )
-    }
 
     data class Trailer(
         @SerializedName("description")
