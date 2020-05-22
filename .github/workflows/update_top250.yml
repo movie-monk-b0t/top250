@@ -23,10 +23,10 @@ jobs:
         run: java -jar top250.main.jar
       - name: Commit files
         run: |
-          git config --local user.email "theapache64@gmail.com"
-          git config --local user.name "theapache64-GA"
+          git config --local user.email "moviemonk64@gmail.com"
+          git config --local user.name "movie-monk-b0t"
           git commit -m "🚀 UPDATE top250!" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.MOVIE_MONK_ACCESS_TOKEN }}
