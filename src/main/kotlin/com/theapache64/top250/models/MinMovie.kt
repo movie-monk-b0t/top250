@@ -15,11 +15,13 @@ data class MinMovie(
     @SerializedName("image_url")
     val imageUrl: String, // image-url-goes-here
     @SerializedName("thumb_url")
-    val thumbUrl : String,
+    val thumbUrl: String,
     @SerializedName("imdb_url")
     val imdbUrl: String, // /title/tt0055630/
     @SerializedName("name")
     val name: String, // Movie name goes here
     @SerializedName("rating")
-    val rating: Float // 8.2
+    val rating: Float, // 8.2
+    @SerializedName("year")
+    val year: Int
 )

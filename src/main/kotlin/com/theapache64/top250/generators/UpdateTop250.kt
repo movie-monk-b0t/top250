@@ -111,7 +111,8 @@ fun createMinMovies(sortedMovies: List<IMDBMovie>) {
             movie.image.toThumbUrl(),
             movie.url,
             movie.name,
-            movie.aggregateRating.ratingValue
+            movie.aggregateRating.ratingValue,
+            movie.datePublished.split("-")[0].trim().toInt()
         )
     }
 
