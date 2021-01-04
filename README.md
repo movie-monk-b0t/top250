@@ -1,6 +1,6 @@
 # top250 🌟
 
-The IMDB top 250 in [JSON](top250.json), updates every 6th hour, 24/7. 😮
+The IMDB top 250 in [JSON](top250.json), updates every 6 hour, 24/7. 😮
 
 ## Usage 💻
 
