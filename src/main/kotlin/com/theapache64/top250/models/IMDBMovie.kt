@@ -16,7 +16,7 @@ data class IMDBMovie(
     @SerializedName("creator")
     val creator: List<Creator>,
     @SerializedName("datePublished")
-    val datePublished: String, // 2003-12-19
+    val datePublished: String?, // 2003-12-19
     @SerializedName("description")
     val description: String, // Munna Bhai M.B.B.S. is a movie starring Sanjay Dutt, Arshad Warsi, and Gracy Singh. A gangster sets out to fulfill his father's dream of becoming a doctor.
     @SerializedName("director")

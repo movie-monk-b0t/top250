@@ -23,5 +23,5 @@ data class MinMovie(
     @SerializedName("rating")
     val rating: Float, // 8.2
     @SerializedName("year")
-    val year: Int
+    val year: Int?
 )

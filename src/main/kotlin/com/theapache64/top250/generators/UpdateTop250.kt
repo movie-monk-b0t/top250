@@ -114,7 +114,7 @@ fun createMinMovies(sortedMovies: List<IMDBMovie>) {
             movie.url,
             movie.name,
             movie.aggregateRating.ratingValue,
-            movie.datePublished.split("-")[0].trim().toInt()
+            movie.datePublished?.split("-")?.get(0)?.trim()?.toInt()
         )
     }
 
