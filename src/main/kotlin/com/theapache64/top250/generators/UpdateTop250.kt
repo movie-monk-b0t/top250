@@ -35,7 +35,9 @@ fun main(args: Array<String>) {
 
     val imdbIds = mutableListOf<String>()
     for (result in ID_REGEX.findAll(topHtml)) {
-        imdbIds.add(result.groups["imdbId"]!!.value)
+        val imdbId = result.groups[1]!!.value
+        println(imdbId)
+        imdbIds.add(imdbId)
     }
 
 
@@ -62,7 +64,7 @@ fun main(args: Array<String>) {
         }
 
         try {
-            val movieJson = JSON_REGEX.find(moviesHtml)!!.groups["json"]!!.value
+            val movieJson = JSON_REGEX.find(moviesHtml)!!.groups[1]!!.value
             val movie = gson.fromJson(movieJson, IMDBMovie::class.java)
 
             if (movie.genre is String) {

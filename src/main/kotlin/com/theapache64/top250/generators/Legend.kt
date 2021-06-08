@@ -266,18 +266,20 @@ data class Movie(
 fun main(args: Array<String>) {
     regEx.findAll(data).map { matchResult ->
         Movie(
-            matchResult.groups["name"]!!.value,
-            matchResult.groups["year"]!!.value.toInt(),
-            matchResult.groups["rating"]!!.value.toFloat()
+            matchResult.groups[1]!!.value,
+            matchResult.groups[2]!!.value.toInt(),
+            matchResult.groups[3]!!.value.toFloat()
         )
     }.toList()
         .sortedByDescending { it.year }
         .forEach { movie ->
             println(
-                "🎥 [${movie.title}](https://www.google.com/search?q=${URLEncoder.encode(
-                    "${movie.title} ${movie.year}",
-                    "UTF-8"
-                )})"
+                "🎥 [${movie.title}](https://www.google.com/search?q=${
+                    URLEncoder.encode(
+                        "${movie.title} ${movie.year}",
+                        "UTF-8"
+                    )
+                })"
             )
             println("📆 ${movie.year}")
             println("🌟 ${movie.rating}")
